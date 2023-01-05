@@ -5,10 +5,18 @@ const UseStateArray = () => {
   const [people, setPeople] = React.useState(data);
 
   const removeItem = (id) => {
-      //make a new array that has the matching id removed
-      let newPeople = people.filter((person) => person.id !== id);
-      setPeople(newPeople);
-    };
+    //make a new array that has the matching id removed
+    // eslint-disable-next-line no-lone-blocks
+    {
+      /* let newPeople = people.filter((person) => person.id !== id); */
+    }
+    // setPeople(newPeople);
+
+    setPeople((oldPeople) => {
+      let newPeople = oldPeople.filter((person) => person.id !== id);
+      return newPeople;
+    });
+  };
 
   return (
     <>
