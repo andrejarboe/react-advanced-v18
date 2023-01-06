@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-// by default runs after every re-render
+// by default useEffect runs after every re-render
 // cleanup function
 // second parameter
 const UseEffectBasics = () => {
