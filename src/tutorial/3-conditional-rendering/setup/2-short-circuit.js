@@ -6,7 +6,6 @@ const ShortCircuit = () => {
   const [text, setText] = useState('Andre');
   const [isError, setIsError] = useState(false);
 
-
   // return the first true value
   const firstValue = text || 'hello world';
 
