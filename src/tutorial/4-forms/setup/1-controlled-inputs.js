@@ -8,12 +8,40 @@ import React, { useState } from 'react';
 const ControlledInputs = () => {
 	const [firstName, setFirstName] = useState('');
 	const [email, setEmail] = useState('');
+	const [people, setPeople] = useState([]);
 
 	const handleSubmit = (e) => {
 		// stop browser form trying to submit the form
 		// and refreshing the page
 		e.preventDefault();
-		console.log(firstName, email);
+
+		// console.log(firstName, email);
+
+		//handle error
+		if (firstName && email) {
+      const person = {
+        id: new Date().getTime().toString(),
+				firstName,
+				email,
+			};
+			console.log(person);
+			console.log('People []: ');
+
+			setPeople([...people, person]);
+			//or:
+			/*
+      setPeople((people) => { 
+          return [...people, person]
+      })
+      */
+
+			setFirstName('');
+			setEmail('');
+
+			console.log(people);
+		} else {
+			console.log('empty values');
+		}
 	};
 
 	return (
@@ -43,6 +71,16 @@ const ControlledInputs = () => {
 				</div>
 				<button type="submit">add person</button>
 			</form>
+			{people.map((person) => {
+				const { id, firstName, email } = person;
+
+				return (
+					<div key={id} className="item">
+						<h4>{firstName}</h4>
+						<p>{email}</p>
+					</div>
+				);
+			})}
 		</article>
 	);
 };
